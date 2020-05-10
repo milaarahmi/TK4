@@ -31,7 +31,8 @@ public class Main {
                     bubbleDescending ();
                     break;
                 case 5 :
-                    selectionDescending ();
+                    list = randomData();
+                    selectionDescending (list);
                     break;
                 case 6 :
                     run = false;
@@ -98,26 +99,40 @@ public class Main {
     private static void bubbleDescending() {
     }
 
-    private static void selectionDescending() {
-        int[] num = new int[]{ 5, 6, 1, -2, 3, 2};
+    private static void selectionDescending(List<Integer> num) {
+        var size = num.size();
+        if (size < 1) {
+            System.out.println("Belum memasukkan data");
+            return;
+        }
+
 
         int i, j, first, temp;
-        for ( i = num.length - 1; i > 0; i -- )
+
+        int step = 0;
+
+        for ( i = size - 1; i > 0; i -- )
         {
+            System.out.println("Step " + step);
             first = 0;
             for(j = 1; j <= i; j ++)
             {
-                if( num[ j ] < num[ first ] )
+                if( num.get(j) < num.get(first))
                     first = j;
 
-                System.out.println(Arrays.toString(num));
+                System.out.println(num);
             }
-            temp = num[ first ];
-            num[ first ] = num[ i ];
-            num[ i ] = temp;
+            temp = num.get(first);
+            num.set(first, num.get(i));
+            num.set(i, temp);
+
+            System.out.println("");
+
+            step += 1;
         }
 
-        System.out.println(Arrays.toString(num));
+        System.out.println("Hasil: ");
+        System.out.println(num);
     }
 
 }
