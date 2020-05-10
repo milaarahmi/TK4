@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.*;
 
+import static com.sun.tools.javac.jvm.ByteCodes.swap;
 import static java.util.stream.Collectors.toList;
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
                 case 1:
                     list = randomData();
                     String output = list.toString().replaceAll("(^\\[|\\]$)", "");
-                    System.out.print(list +"\n");
+                    System.out.print(output +"\n");
                     break;
                 case 2:
                     bubbleAscending ();
@@ -98,6 +99,25 @@ public class Main {
     }
 
     private static void selectionDescending() {
+        int[] num = new int[]{ 5, 6, 1, -2, 3, 2};
+
+        int i, j, first, temp;
+        for ( i = num.length - 1; i > 0; i -- )
+        {
+            first = 0;
+            for(j = 1; j <= i; j ++)
+            {
+                if( num[ j ] < num[ first ] )
+                    first = j;
+
+                System.out.println(Arrays.toString(num));
+            }
+            temp = num[ first ];
+            num[ first ] = num[ i ];
+            num[ i ] = temp;
+        }
+
+        System.out.println(Arrays.toString(num));
     }
 
 }
